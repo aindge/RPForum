@@ -1,4 +1,4 @@
-﻿namespace RpForum.Models
+﻿namespace RpForum.Entities
 {
     public interface IDomainEntity
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RpForum.Models
+namespace RpForum.Entities
 {
     public class Board : IDomainEntity
     {

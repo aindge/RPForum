@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RpForum.Models;
+using RpForum.Entities;
 
 namespace RpForum.Data
 {

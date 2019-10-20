@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using RpForum.Common;
 using RpForum.Data;
 using RpForum.Data.Extensions;
-using RpForum.Models;
+using RpForum.Entities;
 
 namespace RpForum.Repositories
 {

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RpForum.Data;
-using RpForum.Models;
+using RpForum.Entities;
 
 namespace RpForum.Controllers
 {

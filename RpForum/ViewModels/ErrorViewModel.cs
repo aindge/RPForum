@@ -1,6 +1,4 @@
-using System;
-
-namespace RpForum.Models
+namespace RpForum.ViewModels
 {
     public class ErrorViewModel
     {

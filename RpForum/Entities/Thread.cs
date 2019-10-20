@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
-namespace RpForum.Models
+namespace RpForum.Entities
 {
     public class Thread : IDomainEntity
     {

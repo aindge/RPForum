@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using RpForum.Data;
-using RpForum.Models;
 using RpForum.Data.Extensions;
+using RpForum.Entities;
 
 namespace RpForum.Repositories
 {

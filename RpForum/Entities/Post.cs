@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RpForum.Models
+namespace RpForum.Entities
 {
     public class Post : IDomainEntity
     {

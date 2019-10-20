@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RpForum.Data;
 
 namespace RpForum.Migrations
 {
     [DbContext(typeof(RpContext))]
-    partial class RpContextModelSnapshot : ModelSnapshot
+    [Migration("20191020044725_AddThreadsBoardsAndCategories")]
+    partial class AddThreadsBoardsAndCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

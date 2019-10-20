@@ -2,7 +2,7 @@
 
 namespace RpForum.Models
 {
-    public class Category
+    public class Category : IDomainEntity
     {
         public int Id { get; set; }
 

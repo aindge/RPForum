@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace RpForum.Models
 {
-    public class Thread
+    public class Thread : IDomainEntity
     {
         public int Id { get; set; }
 

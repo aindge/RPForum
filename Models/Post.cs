@@ -2,7 +2,7 @@
 
 namespace RpForum.Models
 {
-    public class Post
+    public class Post : IDomainEntity
     {
         public int Id { get; set; }
         public string Content { get; set; }

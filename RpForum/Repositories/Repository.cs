@@ -17,8 +17,9 @@ namespace RpForum.Repositories
             Context = context;
         }
 
-        public async Task<T> Find(int id)
+        public async Task<T> FindAsync(int? id)
         {
+            if (id is null) return null;
             return await Context.Set<T>().FirstOrDefaultAsync(entity => entity.Id == id);
         }
 

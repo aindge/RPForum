@@ -2,21 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RpForum.Data;
 using RpForum.Entities;
+using RpForum.Repositories;
+using RpForum.ViewModels.Posts;
 
 namespace RpForum.Controllers
 {
     public class PostsController : Controller
     {
         private readonly RpContext _context;
+        private readonly PostsRepository _repository;
 
         public PostsController(RpContext context)
         {
             _context = context;
+            _repository = new PostsRepository(context);
         }
 
         // GET: Posts
@@ -73,12 +79,16 @@ namespace RpForum.Controllers
                 return NotFound();
             }
 
-            var post = await _context.Posts.FindAsync(id);
+            var post = await _repository.FindAsync(id);
+
             if (post == null)
             {
                 return NotFound();
             }
-            return View(post);
+
+            var viewModel = new EditPostViewModel(post);
+
+            return View(viewModel);
         }
 
         // POST: Posts/Edit/5
@@ -86,34 +96,25 @@ namespace RpForum.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Content")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Content")] EditPostViewModel viewModel)
         {
-            if (id != post.Id)
+            if (id != viewModel.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            viewModel.Validate(new EditPostViewModelValidator());
+
+            if (viewModel.IsValid)
             {
-                try
-                {
-                    _context.Update(post);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PostExists(post.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _repository.Submit(viewModel);
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(post);
+
+            viewModel.ValidationResult.AddToModelState(ModelState, null);
+
+            return View(viewModel);
         }
 
         // GET: Posts/Delete/5

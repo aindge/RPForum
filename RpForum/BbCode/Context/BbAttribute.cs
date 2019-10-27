@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RpForum.BbCode
+namespace RpForum.BbCode.Context
 {
     public class BbAttribute : Attribute
     {

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using System.Collections.Generic;
 using RpForum.BbCode.Compiler;
 
-namespace RpForum.BbCode.Tags
+namespace RpForum.BbCode.Context.Tags
 {
     public class ImageTag : BbTag
     {

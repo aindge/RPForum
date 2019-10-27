@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using RpForum.BbCode.Compiler;
-using RpForum.BbCode.Parser;
 
-namespace RpForum.BbCode.Tags
+namespace RpForum.BbCode.Context.Tags
 {
     public abstract class BbTag : ParseContext
     {
@@ -23,7 +20,7 @@ namespace RpForum.BbCode.Tags
 
         public void SetAttribute(string name, string value)
         {
-            if (name == string.Empty && IsDefaultAttributeAllowed)
+            if (Names.Contains(name) && IsDefaultAttributeAllowed)
             {
                 DefaultAttribute = value;
             }
@@ -43,7 +40,7 @@ namespace RpForum.BbCode.Tags
         {
             var tag = GetHtmlTag();
 
-            tag.InnerHtml = InnerContext.ToHtml();
+            tag.InnerHtml = string.Join("", InnerContexts.Select(i => i.ToHtml()));
 
             return tag.ToString();
         }

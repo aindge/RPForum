@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RpForum.BbCode.Tags
+namespace RpForum.BbCode.Context.Tags
 {
     public class BoldTag : BbTag
     {
